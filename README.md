@@ -1,4 +1,4 @@
-# beerguru™
+# beer-n-found™
 
 > Application was built on top of Reacts `Hooks`, power of `express` routing and simplicity of `Next.js`.
 
