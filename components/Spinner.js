@@ -14,17 +14,20 @@ function Spinner () {
     return () => clearTimeout(timer)
   })
 
+  function handleOnload () {
+    return setTimeout(() => setIsLoaded(!isLoaded), 1000)
+  }
+
   useEffect(() => {
-    const handleOnload = () => {
-      setTimeout(() => {
-        setIsLoaded(true)
-      }, 1000)
-    }
     window.addEventListener('onload', handleOnload)
     return () => window.removeEventListener('onload', handleOnload)
   }, [])
 
-  return <div className='d-flex justify-content-center align-items-center'>{spinner}</div>
+  return (
+    <div className='d-flex justify-content-center align-items-center'>
+      {spinner}
+    </div>
+  )
 }
 
 export default Spinner

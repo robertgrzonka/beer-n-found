@@ -1,9 +1,11 @@
 import styled from '@emotion/styled'
+import Link from 'next/link'
 
 const NextStyles = styled.a`
-  position: fixed;
-  top: 50%;
-  right: 100px;
+  position: absolute;
+  right: 20px;
+  font-size: 3em;
+  top: 25vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,31 +13,28 @@ const NextStyles = styled.a`
   cursor: pointer;
   z-index: 15;
   font-weight: 700;
-  font-size: 2em;
   opacity: 0.3;
   transition: all 0.4s ease;
   &::before {
-    content: 'Next '
+    content: ' '
   }
   &:hover {
-    text-decoration: none;
     color: #008080;
+    text-decoration: none;
     opacity: 1;
   }
-  @media (max-width: 1250px) {
-    right: 25px;
-    top: 50%;
-    font-size: 3em;
+  @media (min-width: 1200px) {
+    right: 100px;
+    top: 50vh;
+    font-size: 2em;
     &::before {
-      content: ' '
+      content: 'Next '
     }
   }
 `
 
 const PrevStyles = styled.a`
-  position: fixed;
-  top: 50%;
-  left: 100px;
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -43,35 +42,44 @@ const PrevStyles = styled.a`
   cursor: pointer;
   z-index: 15;
   font-weight: 700;
-  font-size: 2em;
+  left: 20px;
+  top: 25vh;
+  font-size: 3em;
   opacity: 0.3;
   transition: all 0.4s ease;
   &::after {
-    content: 'Prev'
+    content: ' '
   }
   &:hover {
     text-decoration: none;
     opacity: 1;
     color: #008080;
   }
-  @media (max-width: 1250px) {
-    left: 25px;
-    top: 50%;
-    font-size: 3em;
+  @media (min-width: 1200px) {
+    font-size: 2rem;
+    left: 100px;
+    top: 50vh;
     &::after {
-      content: ' '
+      content: 'Prev'
     }
   }
 `
 
-const Next = ({ id }) => {
-  const href = `/beer/${id + 1}`
-  return <NextStyles href={href}>▶</NextStyles>
-}
-
-const Prev = ({ id }) => {
-  const href = `/beer/${id - 1}`
-  return <PrevStyles href={href}>◀︎</PrevStyles>
-}
+const Next = ({ id }) => (
+  <Link
+    replace
+    href={`/beer/${id + 1}`}
+  >
+    <NextStyles>▶</NextStyles>
+  </Link>
+)
+const Prev = ({ id }) => (
+  <Link
+    replace
+    href={`/beer/${id - 1}`}
+  >
+    <PrevStyles>◀︎</PrevStyles>
+  </Link>
+)
 
 export { Next, Prev }

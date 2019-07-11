@@ -15,12 +15,12 @@
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-infinite-scroll-component": "^4.5.2",
+    "react-modal": "^3.8.2",
     "standard": "^12.0.1"
   },
   "scripts": {
-    "start": "next build && NODE_ENV=production node server.js",
+    "start": "NODE_ENV=production node server.js",
     "build": "next build",
-    "dev": "node server.js",
-    "now": "now --target production"
+    "dev": "node server.js"
   }
 }

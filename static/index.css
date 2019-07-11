@@ -1,0 +1,40 @@
+a:link {
+  text-decoration: none;
+  color: #008080;
+  border-bottom: 1px solid none;
+  transition: all 0.3s ease;
+}
+
+a:visited {
+  text-decoration: none;
+  color: mediumturquoise;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #212b35;
+  padding-bottom: 1px;
+  transition: all 0.3s ease;
+}
+
+a::after {
+  content: ' ';
+  z-index: -1;
+  background-color: #008080;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  cursor: pointer;
+  will-change: width;
+}
+
+a::after:hover {
+  width: 100%;
+}
+
+a:active {
+  text-decoration: none;
+  color: #008080;
+  transition: all 0.3s ease
+}

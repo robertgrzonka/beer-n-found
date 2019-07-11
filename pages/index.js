@@ -12,36 +12,37 @@ function Main ({ beers }) {
   const fetchBeers = async () => {
     const res = await fetch(`https://api.punkapi.com/v2/beers?page=${pageNumber}&per_page=20`)
     const fetched = await res.json()
-    setPageNumber(pageNumber + 1)
-    setData(data.concat(fetched))
+
+    await setPageNumber(pageNumber + 1)
+    await setData(data.concat(fetched))
   }
 
   return (
     <Layout title='home' id='layout'>
       <div className='container'>
-      <div className='row d-flex align-items-center justify-content-center'>
-      <InfiniteScroll
-        dataLength={data.length}
-        next={fetchBeers}
-        loader={<Spinner />}
-        endMessage={<h4 className='text-center'>Good job, you've made it! Welcome at the end 🍺</h4>}
-        hasMore={!(data.length >= 355)}
-      >
-        <div className='container py-sm-5'>
-          <div className='row d-flex align-items-center justify-content-center'>
-            {data.map(beer => (
-              <Card
-                id={beer.id}
-                src={beer.image_url || '../static/no-picture.png'}
-                name={beer.name}
-                tagline={beer.tagline}
-                key={beer.id}
-              />
-            ))}
-          </div>
+        <div className='row d-flex align-items-center justify-content-center'>
+          <InfiniteScroll
+            dataLength={data.length}
+            next={fetchBeers}
+            loader={<Spinner />}
+            endMessage={<h4 className='text-center'>Good job, you've made it! Welcome at the end 🍺</h4>}
+            hasMore={!(data.length >= 355)}
+          >
+            <div className='container py-sm-5'>
+              <div className='row d-flex align-items-center justify-content-center'>
+                {data.map(beer => (
+                  <Card
+                    id={beer.id}
+                    src={beer.image_url || '../static/no-picture.png'}
+                    name={beer.name}
+                    tagline={beer.tagline}
+                    key={beer.id}
+                  />
+                ))}
+              </div>
+            </div>
+          </InfiniteScroll>
         </div>
-      </InfiniteScroll>
-      </div>
       </div>
     </Layout>
   )

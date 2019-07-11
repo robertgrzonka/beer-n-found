@@ -15,10 +15,6 @@ app
       app.render(req, res, '/beer', { id: req.params.id })
     })
 
-    server.get('/', (req, res) => {
-      return app.render(req, res, '/', req.query)
-    })
-
     server.get('*', (req, res) => {
       return handle(req, res)
     })

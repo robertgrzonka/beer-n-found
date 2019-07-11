@@ -20,7 +20,7 @@ const Routing = ({ children, router, href }) => {
   }
 
   return (
-    <LinkWrapper href={href} onClick={handleClick}>
+    <LinkWrapper onClick={handleClick}>
       {children}
     </LinkWrapper>
   )

@@ -13,16 +13,16 @@ function Beer ({ data }) {
   const fetchData = async (query) => {
     const res = await fetch(`https://api.punkapi.com/v2/beers${query}`)
     const result = await res.json()
-    setSimilarBeers(result)
+    return setSimilarBeers(result)
   }
 
   useEffect(() => {
     const { ibu, abv, ebc } = currentBeer
     const query = `?per_page=3&ibu_gt=${ibu}&abv_gt${abv}&ebc_gt=${ebc}`
-    fetchData(query)
+    return fetchData(query)
   }, [currentBeer])
 
-  const Map = () => {
+  function Map () {
     return similarBeers
       .map(beer => (
         <Card
@@ -58,14 +58,14 @@ function Beer ({ data }) {
         <div className='row d-flex align-items-center justify-content-center'>
           <div className='col-12'>
             <p className='lead text-mute text-center py-2'>
-               Already know this one? Try <span style={{ color: 'rgb(0, 215, 100)', fontWeight: 'bold' }}>these:</span>
+               Already know this one? Try <span style={{ color: '#008080', fontWeight: 400 }}>these:</span>
             </p>
           </div>
 
           <Prev id={currentBeer.id} />
           <Next id={currentBeer.id} />
 
-          { similarBeers.length > 0 ? <Map id='map' /> : <Spinner id='spinner' /> }
+          { similarBeers.length > 0 ? <Map /> : <Spinner /> }
 
         </div>
       </div>

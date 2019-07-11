@@ -12,11 +12,10 @@ class Error extends React.Component {
       <Layout title='error'>
         <div className='container'>
           <div className='row d-flex align-items-center justify-content-center'>
-            <p className='lead'>
+            <p className='lead py-5'>
               {this.props.statusCode
-                ? `An error ${this.props.statusCode} occurred on server.
-                Seems like this page doesn't exist, sorry.`
-                : 'An error occurred on client side.'}
+                ? `An error ${this.props.statusCode} occurred on server.`
+                : `An error ${this.props.statusCode} occurred on client side.`}
             </p>
           </div>
         </div>

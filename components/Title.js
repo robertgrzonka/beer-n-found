@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
+import NavigationModal from './NavigationModal'
 
 const wrapperStyle = css`
   position: fixed;
@@ -10,68 +10,67 @@ const wrapperStyle = css`
   justify-content: center;
   align-content: center;
   align-items: center;
+  height: 80px;
+  background: #212b35;
+  border-bottom: 1px solid #008080;
   z-index: 1;
-  height: 120px;
-  @media (max-width: 1050px) {
+  @media (min-width: 950px) {
     height: 100px;
-  }
-  @media (max-width: 750px) {
-    height: 80px;
   }
 `
 
 const stylesTitle = css`
   font-family: 'Playfair Display', serif;
   letter-spacing: 0.0625em;
-  font-size: 2em;
   font-variant: all-small-caps;
   font-weight: 900;
-  cursor: pointer;
-  transition: all 0.4s ease;
-  z-index: 0;
-  &:hover {
-    color: rgba(255,255,255,0.2);
-  }
-  & span {
-    color: rgba(255, 255, 255);
-    &::before {
-      content: ' ';
-      background-color: #008080;
-      position: absolute;
-      transform: rotate(1deg);
-      box-shadow: 0px 0px 3px #212b35;
-      width: 120%;
-      height: 120%;
-      bottom: -5%;
-      left: -10%;
-      z-index: -1;
+  font-size: 2em;
+  color: rgb(255,255,255);
+  & a {
+    color: rgb(255,255,255);
+    text-decoration: none;
+    transition: all 0.4s ease;
+    &:hover {
+      color: #F30E5C;
+    }
+    & span {
+      color: #008080;
     }
   }
 `
 
 function Title () {
-  const [ isScrolled, setIsScrolled ] = useState(false)
+  const [ isBig, setIsBig ] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(!isScrolled)
-    window.addEventListener('scroll', () => handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    function handleResize () {
+      if (window.innerWidth >= 850 && isBig === false) {
+        return setIsBig(true)
+      } else if (window.innerWidth <= 850 && isBig === true) {
+        return setIsBig(false)
+      }
+    }
+    window.addEventListener('resize', () => handleResize())
+    return () => window.removeEventListener('resize', handleResize())
   })
 
-
-  return (
+  const Navigation = () => (
     <div className='container mb-5 pb-5'>
       <div className='row d-flex align-items-center justify-content-center'>
         <ul className='nav py-2' css={wrapperStyle}>
-          <li className='nav-item'>
-            <Link href='/'>
-              <h1 css={stylesTitle}>beer<span>&</span>found<sup>™</sup></h1>
-            </Link>
+          <li className='nav-item mr-auto mx-5'>
+            <h1 css={stylesTitle}>
+              <a href='/'>beer<span>&</span>found</a>
+              <small><sup style={{ color: '#008080' }}>™</sup></small>
+            </h1>
           </li>
+          <NavigationModal />
         </ul>
       </div>
     </div>
   )
+
+  return <Navigation />
 }
 
 export default Title
