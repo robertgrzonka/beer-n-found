@@ -32,6 +32,10 @@ Spinner is loading with every render which means it's loading *a lot*!
 
 ### …and a looot more!
 
+### To do:
+
+- [ ] rewrite as testing environment for [Blitz.js](https://blitzjs.com) ⚡️
+
 ## License
 MIT © 2019 
 [robertgrzonka](mailto:robert@theguys.sh)
