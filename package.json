@@ -1,6 +1,6 @@
 {
   "name": "beer-n-found",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "server.js",
   "author": "robertgrzonka <robert@theguys.sh> (https://theguys.design)",
   "license": "MIT",
