@@ -1,18 +1,18 @@
-import React from 'react'
-import Layout from '../components/Layout'
+import React from "react";
+import Layout from "../components/Layout";
 
 class Error extends React.Component {
-  static getInitialProps ({ res, err }) {
-    const statusCode = res ? res.statusCode : err ? err.statusCode : null
-    return { statusCode }
+  static getInitialProps({ res, err }) {
+    const statusCode = res ? res.statusCode : err ? err.statusCode : null;
+    return { statusCode };
   }
 
-  render () {
+  render() {
     return (
-      <Layout title='error'>
-        <div className='container'>
-          <div className='row d-flex align-items-center justify-content-center'>
-            <p className='lead py-5'>
+      <Layout title="error">
+        <div className="container">
+          <div className="row d-flex align-items-center justify-content-center">
+            <p className="lead py-5">
               {this.props.statusCode
                 ? `An error ${this.props.statusCode} occurred on server.`
                 : `An error ${this.props.statusCode} occurred on client side.`}
@@ -20,8 +20,8 @@ class Error extends React.Component {
           </div>
         </div>
       </Layout>
-    )
+    );
   }
 }
 
-export default Error
+export default Error;

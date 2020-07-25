@@ -1,7 +1,7 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
-import { useState, Fragment } from 'react'
-import Modal from 'react-modal'
+import { jsx, css } from "@emotion/core";
+import { useState, Fragment } from "react";
+import Modal from "react-modal";
 
 const linkStyles = css`
   padding: 10px 0px;
@@ -11,10 +11,10 @@ const linkStyles = css`
     transition: all 0.4s ease;
     z-index: 1;
     &:hover {
-      color: #F30E5C;
+      color: #f30e5c;
     }
   }
-`
+`;
 
 const modalStyle = css`
   list-style-type: none;
@@ -22,7 +22,7 @@ const modalStyle = css`
   margin: 0 auto;
   padding: 10px;
   z-index: 10;
-`
+`;
 
 const buttonStyles = css`
   cursor: pointer;
@@ -38,56 +38,64 @@ const buttonStyles = css`
   transition: all 0.4s ease;
   &:hover {
     background-color: #212b35;
-    box-shadow: 0px 3px 10px #F30E5C;
-    border: 1px solid #F30E5C;
-    color: #F30E5C;
+    box-shadow: 0px 3px 10px #f30e5c;
+    border: 1px solid #f30e5c;
+    color: #f30e5c;
   }
-`
+`;
 
-function NavigationModal () {
-  const [ isModalOpen, setIsModalOpen ] = useState(false)
+function NavigationModal() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleClick = () => setIsModalOpen(!isModalOpen)
+  const handleClick = () => setIsModalOpen(!isModalOpen);
 
   return (
     <Fragment>
       <button
         css={buttonStyles}
-        className='ml-auto mx-5'
-        onClick={() => handleClick()}>
-        {isModalOpen ? 'Close' : 'Open'} menu
+        className="ml-auto mx-5"
+        onClick={() => handleClick()}
+      >
+        {isModalOpen ? "Close" : "Open"} menu
       </button>
       <Modal
         isOpen={isModalOpen}
-        contentLabel='Modal'
+        contentLabel="Modal"
         shouldCloseOnOverlayClick
         onRequestClose={() => handleClick()}
         style={{
           overlay: {
-            backgroundColor: 'rgba(69, 79, 91, 0.9)',
-            transition: 'all 0.4s ease'
+            backgroundColor: "rgba(69, 79, 91, 0.9)",
+            transition: "all 0.4s ease"
           },
           content: {
-            backgroundColor: 'rgb(230, 230, 230)',
-            top: '120px',
-            right: '50px',
-            left: 'auto',
-            bottom: 'auto',
-            textAlign: 'center',
-            transition: 'all 0.4s ease'
+            backgroundColor: "rgb(230, 230, 230)",
+            top: "120px",
+            right: "50px",
+            left: "auto",
+            bottom: "auto",
+            textAlign: "center",
+            transition: "all 0.4s ease"
           }
-        }}>
-        <p className='lead'>Check me here:</p>
+        }}
+      >
+        <p className="lead">Check me here:</p>
         <ul css={modalStyle}>
-          <li css={linkStyles}><a href='https://github.com/robertgrzonka'>GitHub</a></li>
-          <li css={linkStyles}><a href='https://theguys.design'>theGuys™</a></li>
-          <li css={linkStyles}><a href='mailto:robert@theguys.sh'>Mail me</a></li>
+          <li css={linkStyles}>
+            <a href="https://github.com/robertgrzonka">GitHub</a>
+          </li>
+          <li css={linkStyles}>
+            <a href="https://theguys.design">theGuys™</a>
+          </li>
+          <li css={linkStyles}>
+            <a href="mailto:robert@theguys.sh">Mail me</a>
+          </li>
           <hr />
-          <small className='text-muted'>MIT © robertgrzonka</small>
+          <small className="text-muted">MIT © robertgrzonka</small>
         </ul>
       </Modal>
     </Fragment>
-  )
+  );
 }
 
-export default NavigationModal
+export default NavigationModal;

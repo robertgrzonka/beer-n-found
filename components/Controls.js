@@ -1,5 +1,5 @@
-import styled from '@emotion/styled'
-import Link from 'next/link'
+import styled from "@emotion/styled";
+import Link from "next/link";
 
 const NextStyles = styled.a`
   position: absolute;
@@ -16,7 +16,7 @@ const NextStyles = styled.a`
   opacity: 0.3;
   transition: all 0.4s ease;
   &::before {
-    content: ' '
+    content: " ";
   }
   &:hover {
     color: #008080;
@@ -28,10 +28,10 @@ const NextStyles = styled.a`
     top: 50vh;
     font-size: 2em;
     &::before {
-      content: 'Next '
+      content: "Next ";
     }
   }
-`
+`;
 
 const PrevStyles = styled.a`
   position: absolute;
@@ -48,7 +48,7 @@ const PrevStyles = styled.a`
   opacity: 0.3;
   transition: all 0.4s ease;
   &::after {
-    content: ' '
+    content: " ";
   }
   &:hover {
     text-decoration: none;
@@ -60,26 +60,20 @@ const PrevStyles = styled.a`
     left: 100px;
     top: 50vh;
     &::after {
-      content: 'Prev'
+      content: "Prev";
     }
   }
-`
+`;
 
 const Next = ({ id }) => (
-  <Link
-    replace
-    href={`/beer/${id + 1}`}
-  >
+  <Link replace href={`/beer/${id + 1}`}>
     <NextStyles>▶</NextStyles>
   </Link>
-)
+);
 const Prev = ({ id }) => (
-  <Link
-    replace
-    href={`/beer/${id - 1}`}
-  >
+  <Link replace href={`/beer/${id - 1}`}>
     <PrevStyles>◀︎</PrevStyles>
   </Link>
-)
+);
 
-export { Next, Prev }
+export { Next, Prev };

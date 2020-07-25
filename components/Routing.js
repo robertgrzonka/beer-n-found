@@ -1,5 +1,5 @@
-import { withRouter } from 'next/router'
-import styled from '@emotion/styled'
+import { withRouter } from "next/router";
+import styled from "@emotion/styled";
 
 const LinkWrapper = styled.div`
   min-height: 300px;
@@ -11,19 +11,15 @@ const LinkWrapper = styled.div`
   &:hover {
     box-shadow: 0px 2px 5px #212b35;
   }
-`
+`;
 
 const Routing = ({ children, router, href }) => {
-  const handleClick = e => {
-    e.preventDefault()
-    router.push(href)
-  }
+  const handleClick = (e) => {
+    e.preventDefault();
+    router.push(href);
+  };
 
-  return (
-    <LinkWrapper onClick={handleClick}>
-      {children}
-    </LinkWrapper>
-  )
-}
+  return <LinkWrapper onClick={handleClick}>{children}</LinkWrapper>;
+};
 
-export default withRouter(Routing)
+export default withRouter(Routing);
